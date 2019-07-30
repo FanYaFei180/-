@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生信息录入系统</title>
+    <style>
+        div,span,ul,li{
+            padding:0;
+            margin:0;
+        }
+        [v-cloak]{
+            display: none;
+        }
+        li{
+            list-style: none;
+            text-align: center;
+            padding:10px 0;
+        }
+        #box{
+            width: 500px;
+            margin:20px auto;
+            background: rgba(234, 230, 238, 0.58);
+            padding:20px 30px;
+            box-sizing: border-box;
+        }
+        .form div{
+            margin:10px ;
+        }
+        .form button{
+            background: #3FACC5;
+            border:none;
+            border-radius: 5px;
+            color: white;
+            padding:5px 10px;
+            height: 35px;
+            line-height: 30px;
+        }
+        .message{
+            width: 434px;
+            box-sizing: border-box;
+            overflow: hidden;
+            border:1px solid #3FACC5;
+            margin:10px auto;
+        }
+        .head{
+            height: 30px;
+            background: #3FACC5;
+            color: white;
+            width: 100%;
+            text-align: center;
+            line-height: 30px;
+        }
+        .message span{
+            display: inline-block;
+        }
+        .message span:nth-child(1){
+            width: 80px;
+        }
+        .message span:nth-child(2) {
+            width: 60px;
+        }
+        .message span:nth-child(3){
+            width: 60px;
+        }
+        .message span:nth-child(4){
+            width: 133px;
+        }
+        .message span:nth-child(5){
+            width: 80px;
+        }
+        .message button{
+            width: 50px;
+            background: #3FACC5;
+            color: white;
+            border:none;
+            padding:5px 10px;
+            border-radius: 5px;
+        }
+        .gry{
+            background: #dedbdbc7;
+        }
+    </style>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+<div id="box" v-cloak="">
+    <form action="" class="form">
+        <fieldset>
+            <legend >学生信息录入系统</legend>
+            <div>
+                <label >姓名：</label>
+                <input type="text" v-model="mess.name">
+            </div>
+            <div>
+                <label >年龄：</label>
+                <input type="text" v-model="mess.age">
+            </div>
+            <div>
+                <span>性别：</span>
+                <select name="" id="" v-model="mess.sex">
+                    <option value="女">女</option>
+                    <option value="男">男</option>
+                </select>
+            </div>
+            <div>
+                <label for="">手机：</label>
+                <input type="text" placeholder="请输入手机号码" v-model="mess.num">
+            </div>
+           <div> <button @click.prevent ="add">创建新用户</button></div>
+        </fieldset>
+    </form>
+    <div class="message">
+        <div class="head">
+            <span>姓名</span>
+            <span>性别</span>
+            <span>年龄</span>
+            <span>手机</span>
+            <span>删除</span>
+        </div>
+        <ul>
+            <li v-for="(item,index) in list" :class="{'gry':index%2 !=0}" >
+                <span v-text="item.name"></span>
+                <span v-text="item.sex"></span>
+                <span v-text="item.age"></span>
+                <span v-text="item.num"></span>
+                <span><button @click="del(index)">删除</button></span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<script>
+    new Vue({
+        el:"#box",
+        data:{
+            mess:{},
+            list:[]
+        },
+        methods:{
+            add(){
+                if(this.mess.name!=undefined&&this.mess.age!=undefined&&this.mess.sex!=undefined&&this.mess.num!=undefined){
+                    this.list.push(this.mess);
+                    this.mess={};
+                }
+            },
+            del(index){
+                this.list.splice(index,1)
+            }
+        }
+
+
+
+
+
+
+
+    })
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        li{
+            list-style-type: none;
+            float: left;
+            width: 140px;
+            height: 120px;
+            margin-right:5px;
+            background: url("img/1.png");
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    window.onload=function () {
+        var oLi = document.getElementsByTagName("li");
+        var onl;
+        for (var i = 0; i < oLi.length; i++) {
+            oLi[i].onl = true;
+            oLi[i].onclick = function () {
+                if (this.onl) {
+                    this.style.background = "url('img/2.png')";
+                    this.onl = false;
+                }
+                else {
+                    this.style.background = "url('img/1.png')";
+                    this.onl = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>居老师语录</button>
+<ul id="list">
+
+</ul>
+</body>
+<script>
+    window.onload=function () {
+        var bth=document.getElementsByTagName("button")[0];
+        var oUl=document.getElementById("list");
+        var oLi=document.getElementsByTagName("li");
+        var arr=[
+            "人一辈子要为自己的热爱献身一次才不白走这一趟 。",
+            "送星星送月亮不如送一片星空。",
+            "还好我来了，要不然你一个人在这儿，都没人给你擦眼泪.",
+            "如果天空的繁星会心有灵犀，幻化出一场梦境，能再遇见你。"
+        ];
+        bth.onclick=function () {
+            // bth.disabled=true;禁用按钮
+            for (var i=0;i<arr.length;i++) {
+                    oUl.innerHTML+="<li>"+arr[i]+"</li>";
+            }
+            for (var i=0;i<oLi.length;i++) {
+                var r = Math.floor(Math.random()*256);
+                var g = Math.floor(Math.random()*256);
+                var b = Math.floor(Math.random()*256);
+                var color = '#'+r.toString(16)+g.toString(16)+b.toString(16);
+                oLi[i].style.color=color;
+            }
+        }
+
+    }
+
+
+</script>
+</html>

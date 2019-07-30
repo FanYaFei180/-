@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+</head>
+<body>
+<button onclick="btn(0)">1</button>
+<button onclick="btn(1)">2</button>
+<button onclick="btn(2)">3</button>
+<script>
+
+
+     var bth=document.getElementsByTagName('button');
+   function btn(di) {
+       for (var i=0;i<bth.length;i++) {
+           bth[i].style.background='';
+       }
+       bth[di].style.background='green';
+   }
+</script>
+</body>
+</html>

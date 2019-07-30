@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist</title>
+    <style>
+        #box{
+            width: 350px;
+            background: #2ccc20;
+            margin:20px auto;
+            padding:20px;
+            color: white;
+        }
+        .list{
+            list-style: none;
+            margin:0;padding:0;
+        }
+        .gry{
+            color: #b7b7b7;
+            text-decoration:line-through;
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <h2>任务列表</h2>
+    <div>任务总数：{{ list.length }}；还有：{{ fins() }}未完成【<span @click="del">完成</span>】</div>
+    <ul class="list">
+        <li v-for="(item,index) of list" :key="index">
+            <input type="checkbox" v-model="item.fg">
+            <span  v-bind:class="{gry:item.fg}" v-if="item.edit" @click="hid(index)">{{ item.dat}}</span>
+            <input type="text" v-model="item.dat" v-else @blur="item.edit=true"  v-focus>
+        </li>
+    </ul>
+    <input type="text" v-model="new_meg"><button @click="add">添加</button>
+</div>
+<script>
+Vue.directive("focus",{
+    inserted:function(el){
+        el.focus()
+    }
+})
+    new Vue({
+        el:"#box",
+        data:{
+            list:[
+                {dat:"设计",fg:false,edit:true},//fg false是未完成   edit：true是可编辑
+                {dat:"编写页面代码",fg:false,edit:true},
+                {dat:"编写js代码",fg:false,edit:true},
+                {dat:"设计产品原型",fg:false,edit:true},
+            ],
+            new_meg:""
+        },
+        methods:{
+            fins(){
+                let num=0;
+                for(let i in this.list){
+                    if (this.list[i].fg===false){
+                        num++;
+                    }
+                }
+                return num
+            },
+            hid(index){
+                if (this.list[index].fg===false) {
+                    this.list[index].edit=!this.list[index].edit;
+                }
+            },
+            add(){
+                this.list.push({dat:this.new_meg,fg:false,edit:true});
+                this.new_meg="";
+            },
+            del(){
+                let newArr=[];
+                for (let i in this.list) {
+                    if (this.list[i].fg===false) {
+                        newArr.push(this.list[i])
+                    }
+                }
+                this.list=newArr
+            }
+
+
+
+
+
+
+        },
+        // directives:{
+        //     focus:{
+        //         inserted(el){
+        //             el.focus()
+        //         }
+        //     }
+        //
+        // }//局部定义自定义指令
+
+
+
+
+
+
+    })
+</script>
+</body>
+</html>

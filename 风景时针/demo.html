@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500" style="border:1px solid #0fcc12 ;background: #000"></canvas>
+<script>
+
+    var canvas=document.getElementById("canvas");
+    var cxt=canvas.getContext("2d");
+    function clock() {
+        var date=new Date();
+        var hour_s=Math.floor(date.getHours());
+
+        var min_s=Math.floor(date.getMinutes());
+
+        var sec=Math.floor(date.getSeconds());
+        hour_s>12?hour_s=hour_s-12:hour_s;
+       var hour =hour_s+(min_s/60);
+        var min=min_s+(sec/60);
+
+        //清除画布
+        cxt.clearRect(0,0,canvas.width,canvas.height);
+        //绘制时钟 画圆盘
+        cxt.save();
+        cxt.beginPath();
+        cxt.strokeStyle="#00ffff";
+        cxt.lineWidth=10;
+        cxt.arc(250,250,200,0,2*Math.PI,);
+        cxt.stroke();
+        cxt.closePath();
+        cxt.restore();
+        //背景
+        cxt.clip();
+        cxt.drawImage(img,50,50,400,400);
+
+            //画时刻度，12个
+            cxt.save();
+            cxt.translate(250,250);
+            cxt.strokeStyle="#fffe1f";
+            cxt.lineWidth=7;
+            for (var i=0;i<12;i++) {
+                cxt.rotate(Math.PI/180*30);
+                cxt.beginPath();
+                cxt.moveTo(0,-195);
+                cxt.lineTo(0,-175);
+                cxt.stroke();
+                cxt.closePath();
+            }
+            //分刻度
+            for (var j=0;j<60;j++) {
+                cxt.rotate(Math.PI/180*6);
+                cxt.beginPath();
+                cxt.lineWidth=5;
+                cxt.moveTo(0,-195);
+                cxt.lineTo(0,-185);
+                cxt.stroke();
+                cxt.closePath();
+            }
+            cxt.restore();
+            //画时针
+            cxt.save();
+            cxt.translate(250,250);
+            cxt.rotate(hour*30*Math.PI/180);//旋转当前小时
+            cxt.strokeStyle="#00ffff";
+            cxt.lineWidth=7;
+            cxt.beginPath();
+            cxt.moveTo(0,-130);
+            cxt.lineTo(0,10);
+            cxt.closePath();
+            cxt.stroke();
+            cxt.restore();
+            //画分针
+            cxt.save();
+            cxt.translate(250,250);
+            cxt.rotate(min*6*Math.PI/180);//旋转当前几分
+            cxt.beginPath();
+            cxt.strokeStyle="#fffe1f";
+            cxt.lineWidth=6;
+            cxt.moveTo(0,-150);
+            cxt.lineTo(0,10);
+            cxt.closePath();
+            cxt.stroke();
+            cxt.restore();
+            //画秒针
+            cxt.save();
+            cxt.translate(250,250);
+            cxt.rotate(sec*6*Math.PI/180);//旋转当前几秒
+            cxt.strokeStyle="#ff730b";
+            cxt.lineWidth=4;
+            cxt.beginPath();
+            cxt.moveTo(0,-170);
+            cxt.lineTo(0,10);
+            cxt.closePath();
+            cxt.stroke();
+            //小圆
+            cxt.beginPath();
+            cxt.arc(0,0,7,0,2*Math.PI);
+            cxt.closePath();
+            cxt.fillStyle="#fffe1f";
+            cxt.fill();
+            cxt.stroke();
+            cxt.beginPath();
+            cxt.arc(0,-133,7,0,2*Math.PI);
+            cxt.fillStyle="#fffe1f";
+            cxt.fill();
+            cxt.stroke();
+            cxt.closePath();
+            cxt.restore();
+            //时间
+            cxt.font="30px 微软雅黑 ";
+            var time=hour_s+":"+min_s+":"+sec;
+            // console.log(time);
+            cxt.strokeStyle="#cc0f16";
+            cxt.fillStyle="#ccc";
+            cxt.fillText(time,200,350);
+            cxt.strokeText(time,200,350);
+    }
+    //背景
+
+    var img=new Image();
+    img.src="img/1.jpg";
+    img.onload=function(){
+        clock(img);
+        setInterval(function (img) {
+            clock(img);
+        },1000)
+    };
+</script>
+</body>
+</html>

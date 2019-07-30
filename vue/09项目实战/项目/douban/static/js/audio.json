@@ -1,0 +1,72 @@
+{
+    "code": "0000",
+    "toast": "",
+    "new_recommend_count_str": "",
+    "group": [
+        {
+            "title": "正在上映的电影-北京",
+            "group_list": [
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?5146",
+                    "group_name": "超时空同居",
+                    "group_member": "7.2"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?14923",
+                    "group_name": "蓝色金鱼",
+                    "group_member": "0"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?15209",
+                    "group_name": "多啦A梦：大哒哒哒哒",
+                    "group_member": "6.9"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?82445",
+                    "group_name": "多啦A梦：大哒哒哒哒",
+                    "group_member": "6.9"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?85306",
+                    "group_name": "多啦A梦：大哒哒哒哒",
+                    "group_member": "6.9"
+                }
+            ]
+        },
+        {
+            "title": "即将上映的电影",
+            "group_list": [
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?15271",
+                    "group_name": "国产剧",
+                    "group_member": "2.6",
+                    "topic_title": "这里是国产剧爱好者小组，欢迎讨论所有关于国产剧的话题。"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?38237",
+                    "group_name": "抠门女性联合会",
+                    "group_member": "1.8",
+                    "topic_title": "本组专供女性朋友们交流抠门心得，共同谴责挥霍浪费的同姓异性伴侣。"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?39457",
+                    "group_name": "旅行青蛙",
+                    "group_member": "8.6",
+                    "topic_title": "欢迎呱呱们的老母亲来此交流经验。"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?85307",
+                    "group_name": "旅行青蛙",
+                    "group_member": "8.6",
+                    "topic_title": "欢迎呱呱们的老母亲来此交流经验。"
+                },
+                {
+                    "img_url": "http://v.juhe.cn/movie/img?85308",
+                    "group_name": "旅行青蛙",
+                    "group_member": "5.4",
+                    "topic_title": "欢迎呱呱们的老母亲来此交流经验。"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            /*width: 50px;
+            height: 50px;*/
+            font-weight: 700;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="0">
+<input type="button" value="0">
+<input type="button" value="0">
+<input type="button" value="0">
+<div></div>
+<script>
+    window.onload=function () {
+        var bth=document.getElementsByTagName("input");
+        var oDiv=document.getElementsByTagName("div")[0];
+        var str=["A","B","C","D"];
+        var arr=["img/1.png","img/2.png","img/3.png","img/4.png"];
+        for (var i=0;i<bth.length;i++){
+            bth[i].num=0;//自定义属性
+            bth[i].onclick=function () {
+                this.value=str[this.num];//改变value值
+                oDiv.innerHTML="<img src="+arr[this.num]+">";
+                this.num++;
+                if (this.num===arr.length) {
+                    this.num=0;
+                }
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
